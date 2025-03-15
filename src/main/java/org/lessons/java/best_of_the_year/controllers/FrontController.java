@@ -52,7 +52,6 @@ public class FrontController {
 
         return "moviesDetail";
     }
-    
 
     @GetMapping("/songs")
     public String songs(Model model) {
@@ -77,6 +76,7 @@ public class FrontController {
     }
 
     // * Utility Methods
+    
     private ArrayList<Movie> getBestMovies(){
 
         ArrayList<Movie> moviesList = new ArrayList<>();

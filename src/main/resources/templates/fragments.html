@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fragments</title>
+  </head>
+  <body>
+    <th:block th:fragment="navbar">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" th:href="@{/}">Best of the year</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" th:href="@{/}"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/movies}">Movies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/songs}">Songs</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </th:block>
+
+    <th:block th:fragment="result-section(list)">
+      <ul class="list-group">
+        <li th:each="object : ${list}" class="list-group-item">
+          <a
+            th:if="${object instanceof T(org.lessons.java.best_of_the_year.classes.Movie)}"
+            th:href="@{/movies/{id}(id=${object.id})}"
+            th:text="${object.title}"
+          ></a>
+          <a
+            th:if="${object instanceof T(org.lessons.java.best_of_the_year.classes.Song)}"
+            th:href="@{/songs/{id}(id=${object.id})}"
+            th:text="${object.title}"
+          ></a>
+        </li>
+      </ul>
+    </th:block>
+  </body>
+</html>
