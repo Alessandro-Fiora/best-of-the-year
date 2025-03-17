@@ -20,7 +20,20 @@
     <main>
       <div class="container">
         <h1 class="text-center my-5">[[${category}]] detail</h1>
-        <h2 class="text-center">[[${content}]]</h2>
+        <div th:if="${content != null}">
+          <h2 class="text-center mb-3">[[${content}]]</h2>
+          <p class="w-50 m-auto">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non,
+            consectetur enim mollitia ad soluta, consequatur iure debitis
+            laudantium nemo culpa ipsum molestiae illo nulla perferendis
+            voluptatum, minima cum error aliquam?
+          </p>
+        </div>
+        <div>
+          <h2 th:unless="${content != null}" class="text-center">
+            No media found
+          </h2>
+        </div>
       </div>
     </main>
     <footer></footer>

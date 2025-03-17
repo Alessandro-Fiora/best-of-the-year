@@ -39,14 +39,16 @@ public class FrontController {
 
 
         ArrayList<Movie> moviesList = new ArrayList<>(this.getBestMovies());
+        Movie foundMovie = null;
 
         for(Movie movie : moviesList){
             if (movie.getId() == id) {
-                model.addAttribute("content", movie);
+                foundMovie = movie;
                 break;
             } 
         }
-
+        
+        model.addAttribute("content", foundMovie);
         return "detail";
     }
 
@@ -65,14 +67,16 @@ public class FrontController {
 
 
         ArrayList<Song> songsList = new ArrayList<>(this.getBestSongs());
+        Song foundSong = null;
 
         for(Song song : songsList){
             if (song.getId() == id) {
-                model.addAttribute("content", song);
+                foundSong = song;
                 break;
             } 
         }
-
+        
+        model.addAttribute("content", foundSong);
         return "detail";
     }
 
