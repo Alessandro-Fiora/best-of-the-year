@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- * BOOTSTRAP CSS -->
     <link
       th:rel="stylesheet"
       th:href="@{webjars/bootstrap/5.3.3/css/bootstrap.min.css}"
     />
+    <!-- * CUSTOM CSS -->
+    <link th:rel="stylesheet" th:href="@{/style.css}" />
+
     <title>Best of the Year</title>
   </head>
   <body>
@@ -16,12 +20,27 @@
     </header>
     <main>
       <div class="container">
-        <h1>Best of the Year by [[${myName}]]</h1>
+        <section>
+          <h1 class="text-center my-5">Best of the Year by [[${myName}]]</h1>
+          <div class="w-50 m-auto">
+            <img
+              class="img-fluid"
+              th:src="@{/public/img/IMG_4306.JPG}"
+              alt=""
+            />
+            <p class="text-center mt-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
+              molestias veritatis dolores esse maiores vitae. Ab vel officia
+              nisi cupiditate, recusandae accusantium adipisci aperiam
+              asperiores a aspernatur quidem dicta consequatur?
+            </p>
+          </div>
+        </section>
       </div>
     </main>
 
     <footer></footer>
 
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.min.js}"></script>
   </body>
 </html>

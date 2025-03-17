@@ -2,7 +2,6 @@ package org.lessons.java.best_of_the_year.controllers;
 
 import java.util.ArrayList;
 
-import org.lessons.java.best_of_the_year.BestOfTheYearApplication;
 import org.lessons.java.best_of_the_year.classes.Movie;
 import org.lessons.java.best_of_the_year.classes.Song;
 import org.springframework.stereotype.Controller;
@@ -18,13 +17,7 @@ import org.springframework.ui.Model;
 @RequestMapping("/")
 public class FrontController {
 
-    private final BestOfTheYearApplication bestOfTheYearApplication;
-
-    FrontController(BestOfTheYearApplication bestOfTheYearApplication) {
-        this.bestOfTheYearApplication = bestOfTheYearApplication;
-    }
-
-    @GetMapping("/")
+    @GetMapping
     public String home(Model model) {
 
         model.addAttribute("myName", "Alessandro");
@@ -34,45 +27,53 @@ public class FrontController {
     @GetMapping("/movies")
     public String movies(Model model) {
 
-        model.addAttribute("movies", this.getBestMovies());
-        return "movies";
+        model.addAttribute("category", "movies");
+        model.addAttribute("content", this.getBestMovies());
+        return "list";
     }
 
     @GetMapping("/movies/{id}")
     public String moviesDetail(Model model, @PathVariable("id") int id) {
 
+        model.addAttribute("category", "Movies");
+
+
         ArrayList<Movie> moviesList = new ArrayList<>(this.getBestMovies());
 
         for(Movie movie : moviesList){
             if (movie.getId() == id) {
-                model.addAttribute("movie", movie);
+                model.addAttribute("content", movie);
                 break;
             } 
         }
 
-        return "moviesDetail";
+        return "detail";
     }
 
     @GetMapping("/songs")
     public String songs(Model model) {
 
-        model.addAttribute("songs", this.getBestSongs());
-        return "songs";
+        model.addAttribute("category", "songs");
+        model.addAttribute("content", this.getBestSongs());
+        return "list";
     }
 
     @GetMapping("/songs/{id}")
     public String songsDetail(Model model, @PathVariable("id") int id) {
 
+        model.addAttribute("category", "Songs");
+
+
         ArrayList<Song> songsList = new ArrayList<>(this.getBestSongs());
 
         for(Song song : songsList){
             if (song.getId() == id) {
-                model.addAttribute("song", song);
+                model.addAttribute("content", song);
                 break;
             } 
         }
 
-        return "songsDetail";
+        return "detail";
     }
 
     // * Utility Methods

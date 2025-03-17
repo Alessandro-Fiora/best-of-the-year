@@ -41,7 +41,7 @@
     </th:block>
 
     <th:block th:fragment="result-section(list)">
-      <ul class="list-group">
+      <ul class="list-group w-50 m-auto">
         <li th:each="object : ${list}" class="list-group-item">
           <a
             th:if="${object instanceof T(org.lessons.java.best_of_the_year.classes.Movie)}"
